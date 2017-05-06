@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
+// const fs = require('fs');
 
 class YarnLinter {
 
@@ -14,22 +14,22 @@ class YarnLinter {
     }
   }
 
-  validateContext(context  = null) {
-    if (!context){
-      throw new Error('no context provided!')
+  validateContext(context = null) {
+    if (!context) {
+      throw new Error('no context provided!');
     }
 
-    return true
+    return true;
   }
 
-  validateYarnInstall(context){
+  validateYarnInstall(context) {
     // get files
     const packageJson = require(`${context}/package.json`);
     // const yarnLock = fs.readFileSync(`${context}/yarn.lock`, this.fsOptions);
-    const dependencies = this.getDependencies(packageJson);
-
+    // const dependencies = ;
     // console.log('dependencies', dependencies);  // eslint-disable-line
-    return dependencies;
+
+    return this.getDependencies(packageJson);
   }
 
   getDependencies(packageJson) {

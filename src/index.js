@@ -6,4 +6,4 @@
 const YarnLinter = require('./yarn-linter');
 const context = process.cwd();
 
-new YarnLinter(context);  // eslint-disable-now no-new
+new YarnLinter(context);  // eslint-disable-line no-new
