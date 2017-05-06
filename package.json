@@ -1,0 +1,15 @@
+{
+  "name": "yarn-lock-linter",
+  "version": "0.1.0",
+  "description": "A linting tool for yarn.lock files",
+  "main": "src/index.js",
+  "repository": "git@github.com:thescientist13/yarn-lock-linter.git",
+  "author": "Owen Buckley <owen.buckley@analogstudios.net>",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint src/**/*.js test/**/*.js"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0"
+  }
+}
