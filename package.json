@@ -9,6 +9,9 @@
   "scripts": {
     "lint": "eslint src/**/*.js test/**/*.js"
   },
+  "bin": {
+    "yll": "./src/index.js"
+  },
   "devDependencies": {
     "eslint": "^3.19.0"
   }
