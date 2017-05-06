@@ -23,4 +23,4 @@ $ yll
 1. Run `yll` and whatever flags you want to test
 
 ## Testing
-TODO
+`$ yarn run test`
