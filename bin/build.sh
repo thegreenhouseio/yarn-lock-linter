@@ -12,4 +12,4 @@ rm -rf node_modules/ > /dev/null 2>&1
 yarn install
 
 # build
-yarn run lint
+yarn run build

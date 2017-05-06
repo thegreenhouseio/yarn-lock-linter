@@ -7,12 +7,17 @@
   "author": "Owen Buckley <owen.buckley@analogstudios.net>",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint src/**/*.js test/**/*.js"
+    "build": "npm run lint && npm run test",
+    "lint": "eslint src/**/*.js test/**/*.js",
+    "test": "rimraf ./coverage && rimraf ./.nyc_output && nyc ava test/**/*.spec.js -v && nyc report --reporter=cobertura"
   },
   "bin": {
     "yll": "./src/index.js"
   },
   "devDependencies": {
-    "eslint": "^3.19.0"
+    "ava": "^0.19.1",
+    "eslint": "^3.19.0",
+    "nyc": "^10.3.2",
+    "rimraf": "^2.6.1"
   }
 }
