@@ -9,12 +9,12 @@ class YarnLinter {
       encoding: 'utf-8'
     };
 
-    if (this.validateContext(context)) {
+    if (YarnLinter.validateContext(context)) {
       this.validateYarnInstall(context);
     }
   }
 
-  validateContext(context = null) {
+  static validateContext(context = null) {
     if (!context) {
       throw new Error('no context provided!');
     }
@@ -29,10 +29,10 @@ class YarnLinter {
     // const dependencies = ;
     // console.log('dependencies', dependencies);  // eslint-disable-line
 
-    return this.getDependencies(packageJson);
+    return YarnLinter.getAllDependencies(packageJson);
   }
 
-  getDependencies(packageJson) {
+  static getAllDependencies(packageJson) {
     const mergedDeps = {};
     const deps = packageJson.peerDependencies || {};
     const devDeps = packageJson.devDependencies || {};
@@ -44,17 +44,17 @@ class YarnLinter {
 
     for (let key in deps) {
       // console.log('!!!!!key', key); //eslint-disable-line
-      mergedDeps[key] = deps[key].replace('^', '').replace('~');
+      mergedDeps[key] = deps[key].replace('^', '').replace('~', '');
     }
 
     for (let key in devDeps) {
       // console.log('!!!!!key', key); //eslint-disable-line
-      mergedDeps[key] = devDeps[key].replace('^', '').replace('~');
+      mergedDeps[key] = devDeps[key].replace('^', '').replace('~', '');
     }
 
     for (let key in peerDeps) {
       // console.log('!!!!!key', key); //eslint-disable-line
-      mergedDeps[key] = peerDeps[key].replace('^', '').replace('~');
+      mergedDeps[key] = peerDeps[key].replace('^', '').replace('~', '');
     }
 
     console.log('mergedDeps', mergedDeps); // eslint-disable-line
