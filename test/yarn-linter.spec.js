@@ -1,7 +1,7 @@
 const ava = require('ava');
 const YarnLinter = require('../src/yarn-linter');
 
-ava('YarnLinter should instantiate correctly', t => {
+ava('YarnLinter should instantiate correctly when context is provided', t => {
   let linter = new YarnLinter(process.cwd());
 
   t.truthy(linter);
@@ -10,20 +10,6 @@ ava('YarnLinter should instantiate correctly', t => {
 ava('YarnLinter should not instantiate correctly when no context is provided', t => {
   let exception = t.throws(() => {
     new YarnLinter();  // eslint-disable-line no-new
-  });
-
-  t.is(exception.message, 'no context provided!');
-});
-
-ava('YarnLinter.validateContext should return true when a context is provided', t => {
-  const isValid = YarnLinter.validateContext(process.cwd());
-
-  t.true(isValid);
-});
-
-ava('YarnLinter.validateContext should thrown an exception when a targetDirectory is not provided', t => {
-  let exception = t.throws(() => {
-    YarnLinter.validateContext();
   });
 
   t.is(exception.message, 'no context provided!');

@@ -9,17 +9,11 @@ class YarnLinter {
       encoding: 'utf-8'
     };
 
-    if (YarnLinter.validateContext(context)) {
+    if (context) {
       this.validateYarnInstall(context);
-    }
-  }
-
-  static validateContext(context = null) {
-    if (!context) {
+    } else {
       throw new Error('no context provided!');
     }
-
-    return true;
   }
 
   validateYarnInstall(context) {
@@ -34,9 +28,9 @@ class YarnLinter {
 
   static getAllDependencies(packageJson) {
     const mergedDeps = {};
-    const deps = packageJson.peerDependencies || {};
+    const deps = packageJson.dependencies || {};
     const devDeps = packageJson.devDependencies || {};
-    const peerDeps = packageJson.dependencies || {};
+    const peerDeps = packageJson.peerDependencies || {};
 
     for (let key in deps) {
       mergedDeps[key] = deps[key].replace('^', '').replace('~', '');
