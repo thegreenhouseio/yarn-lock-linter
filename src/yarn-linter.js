@@ -38,26 +38,18 @@ class YarnLinter {
     const devDeps = packageJson.devDependencies || {};
     const peerDeps = packageJson.dependencies || {};
 
-    console.log('deps', deps);  // eslint-disable-line
-    console.log('devDeps', devDeps);  // eslint-disable-line
-    console.log('peerDeps', peerDeps);  // eslint-disable-line
-
     for (let key in deps) {
-      // console.log('!!!!!key', key); //eslint-disable-line
       mergedDeps[key] = deps[key].replace('^', '').replace('~', '');
     }
 
     for (let key in devDeps) {
-      // console.log('!!!!!key', key); //eslint-disable-line
       mergedDeps[key] = devDeps[key].replace('^', '').replace('~', '');
     }
 
     for (let key in peerDeps) {
-      // console.log('!!!!!key', key); //eslint-disable-line
       mergedDeps[key] = peerDeps[key].replace('^', '').replace('~', '');
     }
 
-    console.log('mergedDeps', mergedDeps); // eslint-disable-line
     return mergedDeps;
   }
 }
